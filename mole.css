@@ -1,137 +1,170 @@
-*
-{
-    margin: 0px;
-    padding: 0px;
-}
-body, html{
-    background-color: rgb(220, 183, 241);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-h1{
-    
-    margin-left: 20px;
-    place-self: center;
+body, html {
+    background-color: rgb(220, 183, 241);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    font-family: sans-serif;
+    touch-action: manipulation; /* prevents double-tap zoom on mobile */
+}
+
+h1 {
+    text-align: center;
     margin-top: 10px;
+    margin-bottom: 8px;
     width: max-content;
-    height: max-content;
+    max-width: 95vw;
     border-radius: 10px;
-    padding: 5px;
-    padding-right: 10px;
+    padding: 6px 14px;
     background-color: rgb(219, 44, 205);
     box-shadow: 10px 5px 20px rgb(0, 153, 255),
                 -10px -5px 20px rgb(0, 174, 255);
-
+    font-size: clamp(1.2rem, 5vw, 2rem);
 }
 
-h2
-{
-    margin-left: 20px;
-    place-self: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(10px, 4vw, 60px);
+    flex-wrap: wrap;
+    text-align: center;
+    margin-bottom: 12px;
     width: max-content;
-    height: max-content;
+    max-width: 95vw;
     border-radius: 10px;
     background-color: rgb(219, 44, 205);
-    padding: 5px;
-    padding-right: 10px;
+    padding: 6px 14px;
+    font-size: clamp(0.9rem, 3.5vw, 1.2rem);
 }
 
-.grid
-{
-    display: grid;
-    grid-template-columns: repeat(5, 100px);
-    grid-template-rows:  repeat(3, 100px);
-    width: max-content;
-    height: max-content;
-    background-color: rgba(120, 231, 231, 0.5);
-    border-radius: 50px;
-    place-self: center;
+#timelabel, #scoretext {
+    white-space: nowrap;
 }
-.grid>div
-{
+
+/* Grid: fluid cell size using clamp */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, clamp(48px, 15vw, 100px));
+    grid-template-rows: repeat(3, clamp(48px, 15vw, 100px));
+    width: max-content;
+    max-width: 95vw;
+    background-color: rgba(120, 231, 231, 0.5);
+    border-radius: clamp(20px, 5vw, 50px);
+    padding: 6px;
+    margin-bottom: 14px;
+}
+
+.grid > div {
     border: 1px solid rgb(241, 12, 153);
     border-radius: 50%;
-    margin-top: 20px;
-    margin: 5px;
-}
-#scoretext
-{
-    margin-left: 110px;   
+    margin: clamp(3px, 1.2vw, 5px);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* remove tap flash on mobile */
 }
 
-#buttons
-{
-    place-self: center;
+#buttons {
+    display: flex;
+    justify-content: center;
+    gap: clamp(16px, 6vw, 60px);
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-#buttons>button
-{  
-    margin-top: 20px;
-    width: 100px;
+#buttons > button {
+    margin-top: 10px;
+    width: clamp(80px, 28vw, 120px);
+    height: clamp(36px, 10vw, 44px);
     border: none;
-    height: 40px;
     border-radius: 10px;
     background-color: rgb(228, 25, 218);
+    font-size: clamp(0.8rem, 3vw, 1rem);
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    letter-spacing: 1px;
+    transition: transform 0.1s;
 }
 
-.mole
-{
+#buttons > button:active {
+    transform: scale(0.95);
+}
+
+.mole {
     background-image: url("images.jpg");
     background-position: center;
     background-size: contain;
+    background-repeat: no-repeat;
     animation: Mole 0.3s ease forwards;
-
 }
 
-
-
-@keyframes Mole
-{ 0%,100%
-    {transform:scale(1);} 
-    50%{transform:scale(1.3);} 
-    75%{transform:scale(1.3);}
+@keyframes Mole {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.3); }
+    75%       { transform: scale(1.3); }
 }
 
-.popup
-{
+/* Popup: centered overlay, no more fixed px offsets */
+.popup {
     display: none;
-    width: max-content;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    z-index: 100;
+    width: min(90vw, 380px);
+    padding: 24px 30px;
+    background-color: rgba(37, 253, 253, 0.95);
+    border-radius: 20px;
     box-shadow: 10px 5px 20px rgb(0, 255, 85),
                 -10px -5px 20px rgb(0, 255, 76);
-    height: 30px;
-    padding: 20px;
-    padding-top: 10px;
-    background-color: rgba(37, 253, 253, 0.884);
-    font-size: xx-large;
-    border-radius: 20px;
-    position: relative;
-    top: -250px;
-    left: 37%;
-    animation: Pop 1s ease-out forwards 1;
+    text-align: center;
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
 }
 
-.show
-{
+.popup p {
+    margin-bottom: 16px;
+}
+
+.show {
     display: block;
-    width: max-content;
-    box-shadow: 10px 5px 20px rgb(0, 255, 85),
-                -10px -5px 20px rgb(0, 255, 76);
-    height: 30px;
-    padding: 20px;
-    padding-top: 10px;
-    background-color: rgba(37, 253, 253, 0.884);
-    font-size: xx-large;
-    border-radius: 20px;
-    position: relative;
-    top: -250px;
-    left: 37%;
-    animation: Pop 1s ease-out alternate 1;
+    animation: Pop 0.4s ease-out forwards;
 }
 
-@keyframes Pop 
-{ 0%,100%
-    {transform:scale(1);} 
-    50%{transform:scale(1.3);} 
-    75%{transform:scale(1.3);}
+@keyframes Pop {
+    0%   { transform: translate(-50%, -50%) scale(0.6); opacity: 0; }
+    70%  { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
+}
+
+/* OK button inside popup */
+#okBtn {
+    margin-top: 6px;
+    width: 80px;
+    border: none;
+    border-radius: 12px;
+    color: green;
+    font-size: 1.1rem;
+    font-weight: bold;
+    height: 38px;
+    background-color: white;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+#okBtn:active {
+    transform: scale(0.95);
+}
+
+/* ── Tablet / smaller desktop tweaks ── */
+@media (max-width: 540px) {
+    h1 { font-size: clamp(1rem, 6vw, 1.5rem); }
+    h2 { font-size: clamp(0.8rem, 4vw, 1rem); gap: 12px; }
 }
