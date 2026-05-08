@@ -2,38 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whack A Mole</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Whack A Mole Game</title>
     <link rel="stylesheet" href="mole.css">
     <script defer src="mole.js"></script>
 </head>
-<body>   
+<body>
     <h1>Whack A Mole</h1>
-    <h2>Count Down: <span id="time">30</span>s <span id="scoretext" >Score:<span id="score">0</span> </span></h2>
-   <div class="grid">
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-    <div class="hole"></div>
-  </div>
-  <div id="buttons">
-  <button id="startBtn">START</button>
-  <button id="ResetBtn" style="margin-left: 270px;">RESET</button>
-  </div>
-  <div class="popup">
-    Your Scores are: <span id="Pscore"> 0</span>
-</div>
-
+    <h2>
+        <span id="timelabel">⏱ <span id="time">30</span>s</span>
+        <span id="scoretext">🎯 Score: <span id="score">0</span></span>
+    </h2>
+    <div class="grid">
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+    </div>
+    <div id="buttons">
+        <button id="startBtn">START</button>
+        <button id="ResetBtn">RESET</button>
+    </div>
+    <div class="popup">
+        <p>🎉 Your Score: <span id="Pscore">0</span></p>
+    </div>
 </body>
 </html>
