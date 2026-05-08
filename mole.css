@@ -52,8 +52,8 @@ h2 {
 /* Grid: fluid cell size using clamp */
 .grid {
     display: grid;
-    grid-template-columns: repeat(5, clamp(48px, 15vw, 100px));
-    grid-template-rows: repeat(3, clamp(48px, 15vw, 100px));
+    grid-template-columns: repeat(4, clamp(48px, 15vw, 100px));
+    grid-template-rows: repeat(4, clamp(48px, 15vw, 100px));
     width: max-content;
     max-width: 95vw;
     background-color: rgba(120, 231, 231, 0.5);
